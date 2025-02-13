@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Aloud Button</title>
+</head>
+<body>
+    <button onclick="speakText()">🔊 Read Aloud</button>
+
+    <script>
+        function speakText() {
+            let text = document.body.innerText;
+            let speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "en-US"; // Adjust for different languages
+            speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>
