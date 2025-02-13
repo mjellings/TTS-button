@@ -10,11 +10,21 @@
 
     <script>
         function speakText() {
-            let text = document.body.innerText;
-            let speech = new SpeechSynthesisUtterance(text);
-            speech.lang = "en-US"; // Adjust for different languages
-            speechSynthesis.speak(speech);
+            // Try to read selected text first
+            let selectedText = window.getSelection().toString().trim();
+
+            // If no selection, fall back to the whole document
+            let textToRead = selectedText || document.body.innerText;
+
+            if (textToRead) {
+                let speech = new SpeechSynthesisUtterance(textToRead);
+                speech.lang = "en-US"; // Change language if needed
+                speechSynthesis.speak(speech);
+            } else {
+                alert("No readable text found!");
+            }
         }
     </script>
 </body>
 </html>
+
